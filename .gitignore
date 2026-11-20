@@ -1,0 +1,8 @@
+bin/
+obj/
+.vs/
+*.user
+# local database (contains customer bookings)
+*.db
+*.db-shm
+*.db-wal

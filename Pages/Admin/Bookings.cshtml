@@ -1,0 +1,56 @@
+@page "/Admin/Bookings"
+@model DamasBarbershop.Pages.Admin.BookingsModel
+@{
+    ViewData["Title"] = "Bookings (Admin)";
+}
+
+<section class="page-banner">
+    <div class="container">
+        <div class="eyebrow">Staff Only</div>
+        <h1>Bookings</h1>
+        <p>All appointment requests submitted through the site.</p>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        @if (!Model.Bookings.Any())
+        {
+            <p>No bookings yet.</p>
+        }
+        else
+        {
+            <div style="overflow-x:auto;">
+            <table style="width:100%;border-collapse:collapse;background:#fff;">
+                <thead>
+                    <tr style="text-align:left;border-bottom:2px solid var(--line);">
+                        <th style="padding:10px;">Name</th>
+                        <th style="padding:10px;">Service</th>
+                        <th style="padding:10px;">Barber</th>
+                        <th style="padding:10px;">Date</th>
+                        <th style="padding:10px;">Time</th>
+                        <th style="padding:10px;">Phone</th>
+                        <th style="padding:10px;">Email</th>
+                        <th style="padding:10px;">Submitted</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var b in Model.Bookings)
+                    {
+                        <tr style="border-bottom:1px solid var(--line);">
+                            <td style="padding:10px;">@b.Name</td>
+                            <td style="padding:10px;">@b.Service</td>
+                            <td style="padding:10px;">@b.Barber</td>
+                            <td style="padding:10px;">@b.Date</td>
+                            <td style="padding:10px;">@b.Time</td>
+                            <td style="padding:10px;">@b.Phone</td>
+                            <td style="padding:10px;">@b.Email</td>
+                            <td style="padding:10px;">@b.SubmittedAt.ToLocalTime().ToString("g")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            </div>
+        }
+    </div>
+</section>

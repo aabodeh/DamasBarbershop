@@ -1,0 +1,56 @@
+@page "/Services"
+@{
+    ViewData["Title"] = "Services & Pricing";
+    var menu = new (string Group, (string Name, string Price, string Time, string Desc)[] Items)[]
+    {
+        ("Haircuts", new[] {
+            ("Signature Haircut", "$35", "30 min", "Precision cut tailored to your face shape, finished with a hot towel."),
+            ("Skin Fade", "$40", "40 min", "Clean, blended skin fade with sharp detailing."),
+            ("Kid's Haircut", "$25", "25 min", "Ages 12 and under.")
+        }),
+        ("Beard & Shave", new[] {
+            ("Beard Trim & Shape", "$20", "15 min", "Clean lines, straight-razor finished."),
+            ("Hot Towel Shave", "$40", "45 min", "Steam, lather, and a full straight-razor shave."),
+            ("Beard Coloring", "$30", "30 min", "Natural-looking color to cover grey.")
+        }),
+        ("Combos", new[] {
+            ("Haircut + Beard Trim", "$50", "45 min", "Our most popular combo, done back to back."),
+            ("The Full Service", "$70", "75 min", "Haircut, hot towel shave, and beard shape.")
+        })
+    };
+}
+
+<section class="page-banner">
+    <div class="container">
+        <div class="eyebrow">Menu</div>
+        <h1>Services & Pricing</h1>
+        <p>Every service includes a hot towel finish. Prices are a starting point — ask your barber about add-ons.</p>
+    </div>
+</section>
+
+@foreach (var group in menu)
+{
+    <section>
+        <div class="container">
+            <h2 style="margin-bottom:34px;">@group.Group</h2>
+            <div class="grid-3">
+                @foreach (var item in group.Items)
+                {
+                    <div class="card service-card">
+                        <h3>@item.Name</h3>
+                        <div class="service-price">@item.Price</div>
+                        <div class="service-meta">@item.Time</div>
+                        <p>@item.Desc</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}
+
+<section class="cta-banner">
+    <div class="container">
+        <h2>Ready to Book?</h2>
+        <a class="btn btn-dark" href="/BookNow">Book Now</a>
+    </div>
+</section>
